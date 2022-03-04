@@ -81,6 +81,7 @@ class WashingMachine:
 
 
 washer = WashingMachine()
+
 # print(washer.wash_clothes(100, 200))
 # print(washer.show_powder())
 # print(washer.show_conditioner())
@@ -111,7 +112,10 @@ class Newspaper(Publication):
 
 book = Book('Гарри Поттер', '16 07 2005', '607', 'CoolLib', 'book')
 print(book.get_code_in_library())
+
 magazine = Magazine('Человек-Паук', '10 05 2004', '28', 'DC', 'magazine')
 print(magazine.get_code_in_library())
+
 news = Newspaper('Вести', '04 03 2022', '1', 'KR', 'newspaper')
 print(news.get_code_in_library())
+
