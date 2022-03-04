@@ -41,6 +41,7 @@ class Calculator:
         return self.int
 
 calculator = Calculator('Casio', 2000)
+print(str(calculator))
 
 # print(calculator.add(10, 10))
 # print(calculator.subtract(20, 5, 1, 3 -10))
