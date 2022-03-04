@@ -101,6 +101,7 @@ class Publication:
 
 class Book(Publication):
     pass
+
 class Magazine(Publication):
     pass
 
