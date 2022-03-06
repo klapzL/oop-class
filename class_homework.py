@@ -97,6 +97,7 @@ washer = WashingMachine()
 # print(washer.wash_clothes(1000, 1000))
 
 class Publication:
+    
     def __init__(self, name, date, pages, library, type):
         self.name = name
         self.date = date
@@ -108,17 +109,19 @@ class Publication:
         return f'{self.library[0:2]}, {self.type}, {self.name[0:2]}, {self.pages}, {self.date}'
 
 class Book(Publication):
-<<<<<<< HEAD
+
     def __init__(self, name, date, pages, library):
         type = 'book'
         super().__init__(name, date, pages, library, type)
 
 class Magazine(Publication):
+    
     def __init__(self, name, date, pages, library):
         type = 'magazine'
         super().__init__(name, date, pages, library, type)
 
 class Newspaper(Publication):
+    
     def __init__(self, name, date, pages, library):
         type = 'newspaper'
         super().__init__(name, date, pages, library, type)
@@ -131,22 +134,3 @@ print(magazine.get_code_in_library())
 
 news = Newspaper('Вести', '04 03 2022', '1', 'KR')
 print(news.get_code_in_library())
-=======
-    pass
-
-class Magazine(Publication):
-    pass
-
-class Newspaper(Publication):
-    pass
-
-book = Book('Гарри Поттер', '16 07 2005', '607', 'CoolLib', 'book')
-print(book.get_code_in_library())
-
-magazine = Magazine('Человек-Паук', '10 05 2004', '28', 'DC', 'magazine')
-print(magazine.get_code_in_library())
-
-news = Newspaper('Вести', '04 03 2022', '1', 'KR', 'newspaper')
-print(news.get_code_in_library())
-
->>>>>>> 7cdc34de13110c4d9908c33ac55284de5872e5bb
