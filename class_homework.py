@@ -68,15 +68,9 @@ class WashingMachine:
         self.__conditioner -= val
 
     def wash_clothes(self, powder, conditioner):
-<<<<<<< HEAD
         if self.__powder < powder:
             if self.__conditioner < conditioner:
                 return f'Для очистки, порошка и ополаскивателся недостаточно. Пополните запасы порошка на {powder - self.__powder} гр. и ополаскивателя на {conditioner - self.__conditioner} мл.'
-=======
-        if self.__powder < powder and self.__conditioner < conditioner:
-            return f'Для очистки, порошка и ополаскивателся недостаточно. Пополните запасы порошка на {powder - self.__powder} гр. и ополаскивателя на {conditioner - self.__conditioner} мл.'
-        elif self.__powder < powder:
->>>>>>> 7cdc34de13110c4d9908c33ac55284de5872e5bb
             return f'Поршка недостаточно. Пополните его запасы на {powder - self.__powder} гр.'
         elif self.__conditioner < conditioner:
             return f'Ополаскивателя недостаточно. Пополните его запасы на {conditioner - self.__conditioner} мл.'
@@ -108,7 +102,6 @@ class Publication:
         return f'{self.library[0:2]}, {self.type}, {self.name[0:2]}, {self.pages}, {self.date}'
 
 class Book(Publication):
-<<<<<<< HEAD
     def __init__(self, name, date, pages, library):
         type = 'book'
         super().__init__(name, date, pages, library, type)
@@ -131,22 +124,3 @@ print(magazine.get_code_in_library())
 
 news = Newspaper('Вести', '04 03 2022', '1', 'KR')
 print(news.get_code_in_library())
-=======
-    pass
-
-class Magazine(Publication):
-    pass
-
-class Newspaper(Publication):
-    pass
-
-book = Book('Гарри Поттер', '16 07 2005', '607', 'CoolLib', 'book')
-print(book.get_code_in_library())
-
-magazine = Magazine('Человек-Паук', '10 05 2004', '28', 'DC', 'magazine')
-print(magazine.get_code_in_library())
-
-news = Newspaper('Вести', '04 03 2022', '1', 'KR', 'newspaper')
-print(news.get_code_in_library())
-
->>>>>>> 7cdc34de13110c4d9908c33ac55284de5872e5bb
