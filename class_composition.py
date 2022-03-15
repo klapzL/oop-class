@@ -1,6 +1,3 @@
-from sympy import N
-
-
 class BankAccount:
     def __init__(self, first_name, last_name, balance):
         self.__first_name = first_name
@@ -47,7 +44,6 @@ def main():
     print(account1)
     print(account2)
     print()
-
 
     account1.withdraw(500)
     account2.deposit(300)
