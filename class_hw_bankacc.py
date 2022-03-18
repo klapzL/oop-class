@@ -15,7 +15,7 @@ class BankAccount:
         print(f'{self.__last_name} {self.__first_name}, на вашем счету {self.__balance}$')
 
     def show_history(self, key):
-        return '; '.join(self.__history[self.__last_name][key])
+        print('; '.join(self.__history[self.__last_name][key]))
 
     def deposit(self, amount):
         if amount < 0:
@@ -62,27 +62,25 @@ def main():
     account2.deposit(300)
     account2.withdraw(600)
     account2.withdraw(300)
-    print(account1.show_history('Withdraws'))
-    print(account1.show_history('Deposits'))
-    print(account2.show_history('Withdraws'))
-    print(account2.show_history('Deposits'))
+    account1.show_history('Withdraws')
+    account1.show_history('Deposits')
+    account2.show_history('Withdraws')
+    account2.show_history('Deposits')
 
     account1.show_balance
     account2.show_balance
-    print()
 
     account1.transfer(account2, 200)
 
     account1.show_balance
     account2.show_balance
-    print()
 
     account2.transfer(account1, 500)
 
     account1.show_balance
     account2.show_balance
-    print(account1.show_history('Transfers'))
-    print(account2.show_history('Transfers'))
+    account1.show_history('Transfers')
+    account2.show_history('Transfers')
 
     # Ошибки
     # account1.deposit(-200)
