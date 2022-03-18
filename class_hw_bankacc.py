@@ -1,12 +1,13 @@
 import datetime
 
+
 class BankAccount:
     def __init__(self, first_name, last_name, balance):
         self.__first_name = first_name
         self.__last_name = last_name
         self.__balance = balance
         self.__history = {self.__last_name: {'Deposits': [], 'Withdraws': [], 'Transfers': []}}
-    
+
     def __str__(self):
         return f'{self.__last_name} {self.__first_name}'
 
@@ -47,7 +48,6 @@ class BankAccount:
             account.deposit(amount)
             self.__history[self.__last_name]['Transfers'].append(f'{datetime.datetime.now().date()}, cумма перевода {amount}')
             account.__history[account.__last_name]['Transfers'].append(f'{datetime.datetime.now().date()}, cумма пополнения {amount}')
-            
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
 
     print(account1)
     print(account2)
-    
+
     account1.withdraw(500)
     account1.deposit(200)
     account2.deposit(300)
