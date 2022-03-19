@@ -1,53 +1,68 @@
 import datetime
 
+from click import option
+
 
 class BankAccount:
     def __init__(self, first_name, last_name, balance):
-        self.__first_name = first_name
-        self.__last_name = last_name
+        self.__1st_name = first_name
+        self.__2nd_name = last_name
         self.__balance = balance
-        self.__history = {self.__last_name: {'Deposits': [], 'Withdraws': [], 'Transfers': []}}
+        self.__history = {
+            self.__2nd_name:
+                {
+                    'Deposits': [],
+                    'Withdraws': [],
+                    'Transfers': []
+                }
+            }
 
     def __str__(self):
-        return f'{self.__last_name} {self.__first_name}'
+        return f'{self.__2nd_name} {self.__1st_name}'
 
     @property
     def show_balance(self):
-        print(f'{self.__last_name} {self.__first_name}, на вашем счету {self.__balance}$')
+        print(f'На вашем счету {self.__balance}$')
 
     def show_history(self, key):
-        print('; '.join(self.__history[self.__last_name][key]))
+        print('; '.join(self.__history[self.__2nd_name][key]))
 
     def deposit(self, amount):
         if amount < 0:
             raise ValueError('Сумма не может быть отрицательным')
         else:
+            date = datetime.datetime.now().date()
+            history = self.__history[self.__2nd_name]['Deposits']
             self.__balance += amount
-            print(f'Счёт {self.__last_name}а {self.__first_name}а успешно был пополнен на {amount}$')
-
-            self.__history[self.__last_name]['Deposits'].append(f'{datetime.datetime.now().date()}, сумма пополнения: {amount}')
+            print(f'Счёт {self.__2nd_name}а был пополнен на {amount}$')
+            history.append(f'{date}, сумма пополнения: {amount}')
 
     def withdraw(self, amount):
         if amount > self.__balance:
-            raise ValueError('На вашем балансе недостаточно средств, для проведения транзакции')
+            raise ValueError('На вашем балансе недостаточно средств')
         elif amount < 0:
             raise ValueError('Сумма не может быть отрицательным')
         else:
+            date = datetime.datetime.now().date()
+            history = self.__history[self.__2nd_name]['Withdraws']
             self.__balance -= amount
-            print(f'С счёта {self.__last_name}а {self.__first_name}а было снято {amount}$')
-            self.__history[self.__last_name]['Withdraws'].append(f'{datetime.datetime.now().date()}, cумма снятия: {amount}')
+            print(f'С счёта {self.__2nd_name}а было снято {amount}$')
+            history.append(f'{date}, cумма снятия: {amount}')
 
     def transfer(self, account, amount):
         if amount > self.__balance:
-            raise ValueError('На вашем балансе недостаточно средств, для проведения транзакции')
+            raise ValueError('На вашем балансе недостаточно средств')
         elif amount < 0:
             raise ValueError('Сумма не может быть отрицательным')
         else:
+            date = datetime.datetime.now().date()
+            history_self = self.__history[self.__2nd_name]['Transfers']
+            history_acc = account.__history[account.__2nd_name]['Transfers']
             self.__balance -= amount
-            print(f'{self.__last_name} {self.__first_name} перевёл {amount}$ на счёт {account.__last_name}а {account.__first_name}а')
+            print(f'{self.__2nd_name} перевёл {amount}$ {account.__2nd_name}у')
             account.deposit(amount)
-            self.__history[self.__last_name]['Transfers'].append(f'{datetime.datetime.now().date()}, cумма перевода {amount}')
-            account.__history[account.__last_name]['Transfers'].append(f'{datetime.datetime.now().date()}, cумма пополнения {amount}')
+            history_self.append(f'{date}, cумма перевода {amount}')
+            history_acc.append(f'{date}, cумма пополнения {amount}')
 
 
 def main():
@@ -62,10 +77,12 @@ def main():
     account2.deposit(300)
     account2.withdraw(600)
     account2.withdraw(300)
+    print('\n***HISTORY***')
     account1.show_history('Withdraws')
     account1.show_history('Deposits')
     account2.show_history('Withdraws')
     account2.show_history('Deposits')
+    print('*************\n')
 
     account1.show_balance
     account2.show_balance
@@ -79,8 +96,10 @@ def main():
 
     account1.show_balance
     account2.show_balance
+    print('\n***HISTORY***')
     account1.show_history('Transfers')
     account2.show_history('Transfers')
+    print('*************\n')
 
     # Ошибки
     # account1.deposit(-200)
