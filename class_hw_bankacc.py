@@ -1,7 +1,5 @@
 import datetime
 
-from click import option
-
 
 class BankAccount:
     def __init__(self, first_name, last_name, balance):
